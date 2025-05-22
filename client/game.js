@@ -50,6 +50,9 @@ function initGame(account, manifest) {
   document.getElementById('left-button').onclick = async () => {
     await move(account, manifest, 'left');
   };
+  document.getElementById('move-random-button').onclick = async () => {
+    await moveRandom(account, manifest);
+  };
 
   document.getElementById('spawn-button').onclick = async () => {
     await spawn(account, manifest);
@@ -58,6 +61,7 @@ function initGame(account, manifest) {
     document.getElementById('right-button').disabled = false;
     document.getElementById('down-button').disabled = false;
     document.getElementById('left-button').disabled = false;
+    document.getElementById('move-random-button').disabled = false;
   };
 }
 
@@ -98,6 +102,30 @@ async function move(account, manifest, direction) {
     entrypoint: 'move',
     calldata: calldata,
   });
+
+  console.log('Transaction sent:', tx);
+}
+
+const VRF_PROVIDER_ADDRESS = '0x3fad960fae144e3b5b76adb543a0355fcf80a8088ddc9951b1b4081ed5b3751';
+
+// VRF -> we need to sandwitch the `consume_random` as defined here:
+// https://docs.cartridge.gg/vrf/overview#executing-vrf-transactions
+async function moveRandom(account, manifest) {
+
+  let action_addr = manifest.contracts.find((contract) => contract.tag === ACTION_CONTRACT).address;
+
+  const tx = await account.execute([
+    {
+      contractAddress: VRF_PROVIDER_ADDRESS,
+      entrypoint: 'request_random',
+      calldata: [action_addr, '0', account.address],
+    },
+    {
+      contractAddress: action_addr,
+      entrypoint: 'move_random',
+      calldata: [],
+    }
+  ]);
 
   console.log('Transaction sent:', tx);
 }

@@ -1328,8 +1328,8 @@
   },
   "contracts": [
     {
-      "address": "0x15403a96da7880323181e64a89d9445dca6514aa85343e32b4074a61d71943b",
-      "class_hash": "0xc5322f85096fe9da1d9c87081187994ddd422e66eb917acd10391d4eff98f9",
+      "address": "0xe6d4a8b13e4be398276c5e076c259a292b57ef3c364d688a37d710ebb7484e",
+      "class_hash": "0x6d5ed2ecf90421971c8275f62dd5523a0f49ab690cf49103c0d1eea02a0f23b",
       "abi": [
         {
           "type": "impl",
@@ -1428,6 +1428,13 @@
                   "type": "dojo_intro::models::Direction"
                 }
               ],
+              "outputs": [],
+              "state_mutability": "external"
+            },
+            {
+              "type": "function",
+              "name": "move_random",
+              "inputs": [],
               "outputs": [],
               "state_mutability": "external"
             }
@@ -1554,6 +1561,7 @@
       "systems": [
         "spawn",
         "move",
+        "move_random",
         "upgrade"
       ]
     }
