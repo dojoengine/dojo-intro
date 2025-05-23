@@ -73,7 +73,6 @@ pub mod actions {
 
             let vrf_provider = IVrfProviderDispatcher { contract_address: VRF_PROVIDER_ADDRESS.try_into().unwrap() };
             let random_value: u256 = vrf_provider.consume_random(Source::Nonce(player)).into();
-            println!("Random value: {}", random_value);
             let random_dir: felt252 = (random_value % 4).try_into().unwrap();
 
             let direction = match random_dir {
