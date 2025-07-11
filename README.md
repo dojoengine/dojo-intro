@@ -15,7 +15,7 @@ The game is built with 3 components:
 To work with Dojo, a docker image with all the binaries is available on the [Dojo repository](https://github.com/dojoengine/dojo/pkgs/container/dojo).
 
 ```bash
-docker pull ghcr.io/dojoengine/dojo:v1.5.0
+docker pull ghcr.io/dojoengine/dojo:v1.6.0-alpha.0
 
 # You will then want to use host network for development and mount the contracts directory.
 ```
@@ -31,8 +31,8 @@ Or you can use `asdf`:
 
 ```bash
 asdf plugin add dojo https://github.com/dojoengine/asdf-dojo
-asdf install dojo 1.5.0
-asdf set -u dojo 1.5.0
+asdf install dojo 1.6.0-alpha.1
+asdf set -u dojo 1.6.0-alpha.1
 ```
 
 Don't forget to have also Scarb installed, using `asdf` being the recommended way to go:
