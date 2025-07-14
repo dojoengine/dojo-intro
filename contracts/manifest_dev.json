@@ -1,7 +1,7 @@
 {
   "world": {
-    "class_hash": "0x4c60dc46a8ca8bb47675b7b914053cef769afbf0e340523187336b72bd71d1f",
-    "address": "0x4d9778a74d2c9e6e7e4a24cbe913998a80de217c66ee173a604d06dea5469c3",
+    "class_hash": "0x685ed02eefa98fe7e208aa295042e9bbad8029b0d3d6f0ba2b32546efe0a1f9",
+    "address": "0x7cb61df9ec4bdd30ca1f195bc20ff3c7afd0e45e3a3f156767fe05129fd499b",
     "seed": "dojo_intro",
     "name": "Dojo intro",
     "entrypoints": [
@@ -1328,7 +1328,7 @@
   },
   "contracts": [
     {
-      "address": "0xb056c9813fdc442118bdfead6fda526e5daa5fd7d543304117ed80154ea752",
+      "address": "0x693bc04141539bb8608db41662f7512b57e116087c1c7a529eca0ed4c774ad5",
       "class_hash": "0x41e53ae309fbbdd85ef84fc12ac7f8db30e8660e097263e4161b23ac9ae282c",
       "abi": [
         {
