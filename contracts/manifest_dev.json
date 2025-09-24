@@ -1479,8 +1479,8 @@
   },
   "contracts": [
     {
-      "address": "0xc15f8f861c8ab9e466c69d78ec701c9ad5952404a8d000a06c6217e67f5591",
-      "class_hash": "0x2bd55e0c15ae632fb28484b82069e6b0be1f33ec102b9c12616857b62cff2ff",
+      "address": "0x51a315e981f3ef30f10f775b41bbb2e683af7fe75320065f78eeb5e8e862155",
+      "class_hash": "0x31d40ed4f04a0b798d3ae0a7d3a516d22b97358458e76ef91edc3584c2f6d75",
       "abi": [
         {
           "type": "impl",
@@ -1585,7 +1585,12 @@
             {
               "type": "function",
               "name": "move_random",
-              "inputs": [],
+              "inputs": [
+                {
+                  "name": "vrf_provider_address",
+                  "type": "core::starknet::contract_address::ContractAddress"
+                }
+              ],
               "outputs": [],
               "state_mutability": "external"
             }
