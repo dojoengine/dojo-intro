@@ -114,7 +114,8 @@ async function move(account, manifest, direction) {
   console.log('Transaction sent:', tx);
 }
 
-const VRF_PROVIDER_ADDRESS = '0x15f542e25a4ce31481f986888c179b6e57412be340b8095f72f75a328fbb27b';
+//const VRF_PROVIDER_ADDRESS = '0x15f542e25a4ce31481f986888c179b6e57412be340b8095f72f75a328fbb27b';
+const VRF_PROVIDER_ADDRESS = '0x051fea4450da9d6aee758bdeba88b2f665bcbf549d2c61421aa724e9ac0ced8f';
 
 // VRF -> we need to sandwitch the `consume_random` as defined here:
 // https://docs.cartridge.gg/vrf/overview#executing-vrf-transactions
@@ -132,7 +133,7 @@ async function moveRandom(account, manifest) {
     {
       contractAddress: action_addr,
       entrypoint: 'move_random',
-      calldata: [],
+      calldata: [VRF_PROVIDER_ADDRESS],
     },
   ]);
 

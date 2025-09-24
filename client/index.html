@@ -37,7 +37,8 @@
       const DOMAIN_SEPERATOR = {
         name: 'dojo-intro',
         version: '1.0',
-        chainId: 'KATANA',
+        //chainId: 'KATANA',
+        chainId: 'WP_DOJO_INTRO',
         revision: '1',
       };
 
@@ -45,7 +46,8 @@
         const torii = await init({
           client: {
             worldAddress: manifest.world.address,
-            toriiUrl: 'http://localhost:8080',
+            //toriiUrl: 'http://localhost:8080',
+            toriiUrl: 'https://api.cartridge.gg/x/dojo-intro/torii',
           },
           domain: DOMAIN_SEPERATOR,
         });

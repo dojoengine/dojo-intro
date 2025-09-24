@@ -5,7 +5,7 @@ use starknet::ContractAddress;
 pub trait IActions<T> {
     fn spawn(ref self: T);
     fn move(ref self: T, direction: Direction);
-    fn move_random(ref self: T);
+    fn move_random(ref self: T, vrf_provider_address: ContractAddress);
 }
 
 #[starknet::interface]
@@ -25,12 +25,12 @@ pub mod actions {
     use super::{IActions, IVrfProviderDispatcher, IVrfProviderDispatcherTrait, Source};
     use crate::models::{Direction, Moves, Position, PositionTrait};
 
+    use starknet::ContractAddress;
     use core::num::traits::SaturatingSub;
     use dojo::model::ModelStorage;
 
     pub const INIT_COORD: u32 = 10;
     pub const INIT_REMAINING_MOVES: u8 = 100;
-    const VRF_PROVIDER_ADDRESS: felt252 = 0x15f542e25a4ce31481f986888c179b6e57412be340b8095f72f75a328fbb27b;
 
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
@@ -68,10 +68,10 @@ pub mod actions {
             world.write_model(@moves);
         }
 
-        fn move_random(ref self: ContractState) {
+        fn move_random(ref self: ContractState, vrf_provider_address: ContractAddress) {
             let player = starknet::get_caller_address();
 
-            let vrf_provider = IVrfProviderDispatcher { contract_address: VRF_PROVIDER_ADDRESS.try_into().unwrap() };
+            let vrf_provider = IVrfProviderDispatcher { contract_address: vrf_provider_address };
             let random_value: u256 = vrf_provider.consume_random(Source::Nonce(player)).into();
             let random_dir: felt252 = (random_value % 4).try_into().unwrap();
 
