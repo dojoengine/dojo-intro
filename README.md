@@ -13,24 +13,18 @@ The game is built in two parts:
 To work with Dojo, install the toolchain using `asdf`:
 
 ```bash
-curl -L https://raw.githubusercontent.com/dojoengine/dojo/main/dojoup/asdf-install | bash
+curl -L https://install.dojoengine.org | bash
 ```
 
 ## Deploy contracts
 
 A simple "spawn and move" game letting you generate a character and move them around a board.
 
-To set up your local blockchain environment, change directory to `contracts` and do:
+To set up your local blockchain environment, change directory to `contracts` and run:
 
 ```bash
-# (Tab 1) Start the Katana sequencer
-katana --config katana.toml
-
-# (Tab 2) Build and deploy the contracts
-sozo build && sozo migrate
-
-# (Tab 3) Start the Torii indexer
-torii --config torii_dev.toml
+# Run a script to start up katana, build and deploy the world, and start up torii
+scarb run dev
 ```
 
 ## Run client
@@ -40,11 +34,8 @@ A simple vite project (no React), configured to use `https` (necessary for the [
 Head to the `client` directory and run:
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run the client locally
-pnpm run dev
+# Install dependencies and run the client locally
+pnpm install && pnpm run dev
 ```
 
 You should be all set to play the game!

@@ -46,17 +46,15 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo -e "${GREEN}=== Dojo Development Environment ===${NC}"
 echo -e "${BLUE}Contracts dir: $SCRIPT_DIR${NC}\n"
 
-# Check required tools
-echo -e "${YELLOW}Checking required tools...${NC}"
-for tool in katana sozo torii; do
-    if ! command -v $tool &> /dev/null; then
-        DOCS_LINK="https://book.dojoengine.org/installation"
-        echo -e "${RED}Error: $tool not found. Please install the Dojo toolchain: $DOCS_LINK${NC}"
-        exit 1
-    fi
-    version=$($tool --version 2>&1 | head -n 1)
-    echo -e "${GREEN}✓ $version found${NC}"
-done
+# Install tools via asdf if available
+if command -v asdf &> /dev/null; then
+    echo -e "${YELLOW}Installing tools via asdf...${NC}"
+    asdf install
+    echo -e "${GREEN}✓ asdf install complete${NC}\n"
+else
+    ASDF_INSTALL_LINK="https://asdf-vm.com/guide/getting-started.html"
+    echo -e "${YELLOW}Note: asdf not found. Installation instructions here: $ASDF_INSTALL_LINK${NC}\n"
+fi
 
 # Navigate to contracts directory
 cd "$SCRIPT_DIR"
