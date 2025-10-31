@@ -1,7 +1,7 @@
 {
   "world": {
-    "class_hash": "0x57994b6a75fad550ca18b41ee82e2110e158c59028c4478109a67965a0e5b1e",
-    "address": "0x4fd367663e253d042fef50014873adba41eb40bfd52a3e686c1c37fe6e3dac0",
+    "class_hash": "0x691da17eb9ef169b385eaaf3a303972d187479e30be146d3337423eaec6272d",
+    "address": "0x510876811c1ae4530fee91f1425a8890d1c2f1c88571440159efdd7bb3f796f",
     "seed": "dojo_intro",
     "name": "Dojo intro",
     "entrypoints": [
@@ -266,6 +266,17 @@
             "outputs": [
               {
                 "type": "dojo::world::resource::Resource"
+              }
+            ],
+            "state_mutability": "view"
+          },
+          {
+            "type": "function",
+            "name": "world_version",
+            "inputs": [],
+            "outputs": [
+              {
+                "type": "core::felt252"
               }
             ],
             "state_mutability": "view"
@@ -1479,7 +1490,7 @@
   },
   "contracts": [
     {
-      "address": "0xc15f8f861c8ab9e466c69d78ec701c9ad5952404a8d000a06c6217e67f5591",
+      "address": "0x37eb53c36372ee41b650f7bbd0b058b1efa0eaa8a9a263440f379d69ffa078b",
       "class_hash": "0x2bd55e0c15ae632fb28484b82069e6b0be1f33ec102b9c12616857b62cff2ff",
       "abi": [
         {
