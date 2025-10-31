@@ -50,7 +50,8 @@ echo -e "${BLUE}Contracts dir: $SCRIPT_DIR${NC}\n"
 echo -e "${YELLOW}Checking required tools...${NC}"
 for tool in katana sozo torii; do
     if ! command -v $tool &> /dev/null; then
-        echo -e "${RED}Error: $tool not found. Please install Dojo toolchain.${NC}"
+        DOCS_LINK="https://book.dojoengine.org/installation"
+        echo -e "${RED}Error: $tool not found. Please install the Dojo toolchain: $DOCS_LINK${NC}"
         exit 1
     fi
     version=$($tool --version 2>&1 | head -n 1)
@@ -60,9 +61,9 @@ done
 # Navigate to contracts directory
 cd "$SCRIPT_DIR"
 
-# Step 1: Start Katana
-echo -e "\n${YELLOW}Step 1: Starting Katana...${NC}"
-katana --config katana.toml --explorer > /tmp/katana.log 2>&1 &
+# Step 1: Start Katana using the katana.toml config file
+echo -e "\n${YELLOW}Step 1: Starting Katana with the katana.toml config file...${NC}"
+katana --config katana.toml > /tmp/katana.log 2>&1 &
 KATANA_PID=$!
 echo -e "${GREEN}Katana started (PID: $KATANA_PID)${NC}"
 
@@ -93,8 +94,8 @@ sozo migrate --profile dev
 WORLD_ADDRESS=$(grep -o '"address": "0x[^"]*"' "$SCRIPT_DIR/manifest_dev.json" | head -1 | cut -d'"' -f4)
 echo -e "${GREEN}World deployed at: $WORLD_ADDRESS${NC}"
 
-# Step 4: Start Torii with the deployed world address
-echo -e "\n${YELLOW}Step 4: Starting Torii...${NC}"
+# Step 4: Start Torii with command-line arguments
+echo -e "\n${YELLOW}Step 4: Starting Torii with command-line arguments...${NC}"
 torii --world "$WORLD_ADDRESS" --rpc http://localhost:5050 --http.cors_origins "*" > /tmp/torii.log 2>&1 &
 TORII_PID=$!
 echo -e "${GREEN}Torii started (PID: $TORII_PID)${NC}"
